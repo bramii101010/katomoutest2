@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Katomou — Game QA and playtesting portfolio.">
+  <title>Katomou | Game QA & Playtesting</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --panel-2: #171c22;
+      --text: #f4f7fa;
+      --muted: #a8b0ba;
+      --line: #2a313a;
+      --accent: #8ee3a1;
+      --accent-2: #c8f7d2;
+      --max: 980px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 13, 16, .94);
+    }
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { color: var(--muted); text-decoration: none; font-size: .94rem; }
+    nav a:hover { color: var(--text); }
+
+    .hero { padding: 96px 0 82px; }
+    .eyebrow, .section-label {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+      font-size: .78rem;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 14px 0 20px;
+      font-size: clamp(2.7rem, 7vw, 5.6rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    .hero p { max-width: 680px; color: var(--muted); font-size: 1.12rem; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      text-decoration: none;
+      font-weight: 750;
+    }
+    .button.primary { background: var(--accent); color: #07110a; border-color: var(--accent); }
+    .button:hover { transform: translateY(-1px); }
+
+    section { padding: 64px 0; border-top: 1px solid var(--line); }
+    h2 { margin: 8px 0 28px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.03em; }
+
+    .project {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+    .photo-placeholder {
+      min-height: 390px;
+      border: 1px dashed #46505c;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #11161b, #1b2229);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+    }
+    .photo-placeholder strong { color: var(--text); display: block; margin-bottom: 6px; }
+    .project-copy, .bug-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .project-copy h3, .bug-card h3 { margin: 6px 0 2px; font-size: 1.45rem; }
+    .role { color: var(--accent-2); margin: 0 0 18px; }
+    .project-copy p, .bug-card p { color: var(--muted); }
+    .clean-list { padding-left: 20px; margin: 22px 0 0; }
+    .clean-list li { margin: 7px 0; }
+
+    .bug-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .bug-id { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--accent); }
+    .severity { border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; font-size: .76rem; font-weight: 800; letter-spacing: .08em; }
+    .bug-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .bug-card h4 { margin-bottom: 5px; }
+    .bug-card ol { color: var(--muted); padding-left: 22px; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: #dce2e8; }
+
+    .note {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--accent);
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    footer { padding: 34px 0 50px; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 18px; }
+
+    @media (max-width: 760px) {
+      .topbar { padding: 18px 0; align-items: flex-start; flex-direction: column; gap: 8px; }
+      .hero { padding: 72px 0 60px; }
+      .project, .bug-grid { grid-template-columns: 1fr; }
+      .photo-placeholder { min-height: 280px; }
+      section { padding: 52px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#top">KATOMOU</a>
+      <nav aria-label="Primary navigation">
+        <a href="#testing">Testing</a>
+        <a href="#bug-report">Bug Report</a>
+        <a href="#skills">Skills</a>
+        <!-- Replace # with Sev's actual URLs when ready. -->
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="eyebrow">Game QA &amp; Playtesting</div>
+      <h1>I test games, find bugs, and document how to reproduce them.</h1>
+      <p>
+        I'm building hands-on experience in game QA through playtesting, exploratory testing,
+        and structured bug reporting. I focus on clear reproduction steps, useful evidence,
+        and feedback developers can act on.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#bug-report">View Bug Report</a>
+        <a class="button" href="#testing">Testing Experience</a>
+      </div>
+    </div>
+
+    <section id="testing">
+      <div class="wrap">
+        <div class="section-label">Selected Testing</div>
+        <h2>Hands-on playtesting experience</h2>
+
+        <div class="project">
+          <!-- When you have the photo, replace this div with:
+          <img src="minecraft-testing.jpg" alt="Over-the-shoulder view of a game testing setup" style="width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--line);">
+          -->
+          <div class="photo-placeholder">
+            <div>
+              <strong>Photo goes here</strong>
+              Over-the-shoulder Minecraft / testing setup<br>
+              No face, Discord messages, usernames, or private information visible.
+            </div>
+          </div>
+
+          <article class="project-copy">
+            <div class="section-label">Volunteer Testing</div>
+            <h3>Minecraft Mod Playtesting</h3>
+            <div class="role">Community Playtester · PC</div>
+            <p>
+              Tested a community-developed Minecraft mod and provided feedback directly to
+              the developer. Focused on identifying unexpected behavior, reproducing issues,
+              and communicating observations clearly.
+            </p>
+            <ul class="clean-list">
+              <li>Exploratory testing</li>
+              <li>Functional testing</li>
+              <li>Bug reproduction</li>
+              <li>Developer feedback</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="note">
+          <strong>Optional later:</strong> Add the released pre-launch game here only after confirming what the NDA allows Sev to disclose. Public release does not automatically end confidentiality obligations.
+        </div>
+      </div>
+    </section>
+
+    <section id="bug-report">
+      <div class="wrap">
+        <div class="section-label">Bug Report Sample</div>
+        <h2>Clear, reproducible reporting</h2>
+
+        <article class="bug-card">
+          <div class="bug-top">
+            <span class="bug-id">BUG-001</span>
+            <span class="severity">MEDIUM</span>
+          </div>
+          <h3>[Short, specific description of the issue]</h3>
+          <p><strong>Environment:</strong> Windows 11 · PC · [Game / Build Version]</p>
+
+          <div class="bug-grid">
+            <div>
+              <h4>Steps to Reproduce</h4>
+              <ol>
+                <li>Launch [game/build].</li>
+                <li>Navigate to [location/menu].</li>
+                <li>Perform [specific action].</li>
+                <li>Observe [unexpected behavior].</li>
+              </ol>
+            </div>
+            <div>
+              <h4>Expected Result</h4>
+              <p>[Describe what should happen.]</p>
+              <h4>Actual Result</h4>
+              <p>[Describe what actually happens.]</p>
+              <h4>Evidence</h4>
+              <p>[Screenshot / short video / log, when appropriate.]</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-label">Testing Skills</div>
+        <h2>What I work with</h2>
+        <div class="skills">
+          <span class="skill">Exploratory Testing</span>
+          <span class="skill">Functional Testing</span>
+          <span class="skill">Regression Testing</span>
+          <span class="skill">Bug Reproduction</span>
+          <span class="skill">Bug Documentation</span>
+          <span class="skill">Gameplay Feedback</span>
+          <span class="skill">Screenshots &amp; Video Evidence</span>
+          <span class="skill">PC Gaming</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© 2026 Katomou · Game QA Portfolio</span>
+      <div class="footer-links">
+        <!-- Replace # with real links. -->
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
