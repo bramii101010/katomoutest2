@@ -134,6 +134,11 @@
     .bug-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .bug-card h4 { margin-bottom: 5px; }
     .bug-card ol { color: var(--muted); padding-left: 22px; }
+    .sample-intro {
+      max-width: 720px;
+      color: var(--muted);
+      margin: -12px 0 28px;
+    }
 
     .skills { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill { padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: #dce2e8; }
@@ -244,32 +249,56 @@
       <div class="wrap">
         <div class="section-label">Bug Report Sample</div>
         <h2>Clear, reproducible reporting</h2>
+        <p class="sample-intro">
+          Example bug report from a QA practice project, demonstrating reproduction steps,
+          expected versus actual behavior, severity classification, and environment documentation.
+        </p>
 
         <article class="bug-card">
           <div class="bug-top">
-            <span class="bug-id">BUG-001</span>
-            <span class="severity">MEDIUM</span>
+            <span class="bug-id">BUG-004 · QA PRACTICE PROJECT</span>
+            <span class="severity">HIGH</span>
           </div>
-          <h3>[Short, specific description of the issue]</h3>
-          <p><strong>Environment:</strong> Windows 11 · PC · [Game / Build Version]</p>
+
+          <h3>Door state inverted — closes on startup, opens when power is cut</h3>
+
+          <p>
+            <strong>Project:</strong> Salvage<br>
+            <strong>Environment:</strong> Godot 4.7 · Windows · TestScene<br>
+            <strong>Build:</strong> Manual layout, no seed
+          </p>
 
           <div class="bug-grid">
             <div>
+              <h4>Summary</h4>
+              <p>
+                The door begins in the closed state when the scene starts.
+                Cutting power causes the door to open. Both behaviors are
+                opposite of the expected state.
+              </p>
+
               <h4>Steps to Reproduce</h4>
               <ol>
-                <li>Launch [game/build].</li>
-                <li>Navigate to [location/menu].</li>
-                <li>Perform [specific action].</li>
-                <li>Observe [unexpected behavior].</li>
+                <li>Run TestScene with F5.</li>
+                <li>Observe the door state on startup.</li>
+                <li>Walk to the power switch.</li>
+                <li>Press E to cut power.</li>
+                <li>Observe the door state.</li>
               </ol>
             </div>
+
             <div>
               <h4>Expected Result</h4>
-              <p>[Describe what should happen.]</p>
+              <p>Door should be open on startup. Cutting power should close the door.</p>
+
               <h4>Actual Result</h4>
-              <p>[Describe what actually happens.]</p>
-              <h4>Evidence</h4>
-              <p>[Screenshot / short video / log, when appropriate.]</p>
+              <p>Door is closed on startup. Cutting power causes the door to open.</p>
+
+              <h4>Bug Type</h4>
+              <p>Logic</p>
+
+              <h4>Severity</h4>
+              <p>High — breaks expected gameplay behavior.</p>
             </div>
           </div>
         </article>
